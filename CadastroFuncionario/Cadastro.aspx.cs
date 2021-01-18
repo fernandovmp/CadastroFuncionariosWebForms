@@ -17,6 +17,28 @@ namespace CadastroFuncionario
                 drpSexo.DataSource = _sexos;
                 drpSexo.DataBind();
             }
-        } 
+        }
+
+        protected void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparFormulario();
+        }
+
+        private void LimparFormulario()
+        {
+            LimparControlesDeTexto(txtNome, txtDataNascimento, txtCpf,
+                txtRg, txtOrgaoEmissor, txtTelefone, txtCep, txtRua,
+                txtNumero, txtBairro, txtCidade, txtEstado,
+                txtCargo, txtDataAdimissao, txtCtps);
+            drpSexo.SelectedIndex = 0;
+        }
+
+        private void LimparControlesDeTexto(params ITextControl[] textControls)
+        {
+            foreach (ITextControl control in textControls)
+            {
+                control.Text = "";
+            }
+        }
     }
 }

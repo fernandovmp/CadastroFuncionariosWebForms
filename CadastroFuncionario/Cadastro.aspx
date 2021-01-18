@@ -133,7 +133,7 @@
                     <asp:Button ID="btnSalvar" CssClass="btn btn-primary" runat="server" Text="Salvar" />
                 </td>
                 <td>
-                    <asp:Button ID="btnLimpar" CssClass="btn" runat="server" Text="Limpar" />
+                    <asp:Button ID="btnLimpar" CssClass="btn" runat="server" Text="Limpar" OnClick="btnLimpar_Click" />
                 </td>
                 <td>
                     <asp:Button ID="btnVoltar" CssClass="btn btn-danger" runat="server" Text="Voltar" />
