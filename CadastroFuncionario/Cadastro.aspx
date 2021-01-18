@@ -136,7 +136,7 @@
                     <asp:Button ID="btnLimpar" CssClass="btn" runat="server" Text="Limpar" OnClick="btnLimpar_Click" />
                 </td>
                 <td>
-                    <asp:Button ID="btnVoltar" CssClass="btn btn-danger" runat="server" Text="Voltar" />
+                    <a href="Home.aspx" class="btn btn-danger">Voltar</a>
                 </td>
             </tr>
         </table>
