@@ -29,13 +29,13 @@
                     CPF:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtCpf" runat="server" Width="150" />
+                    <asp:TextBox ID="txtCpf" ClientIDMode="Static" runat="server" Width="150" />
                 </td>
                 <td class="text-right">
                     Tel:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtTelefone" runat="server"/>
+                    <asp:TextBox ID="txtTelefone" ClientIDMode="Static" runat="server"/>
                 </td>
             </tr>
             <tr>
@@ -62,7 +62,7 @@
                     CEP:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtCep" runat="server" Width="100"/>
+                    <asp:TextBox ID="txtCep" ClientIDMode="Static" runat="server" Width="100"/>
                 </td>
                 <td>
                     Rua:
@@ -141,7 +141,13 @@
             </tr>
         </table>
     </div>
-
+    <script type="text/javascript">
+         jQuery(function ($) {
+             $("#txtTelefone").mask("(099)9999-9999");
+             $("#txtCep").mask("99999-999");
+             $("#txtCpf").mask("999.999.999-99");
+         });
+    </script>   
     <style>
         .form-section h4 {
             color: #265a88;
