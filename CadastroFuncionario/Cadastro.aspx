@@ -15,7 +15,7 @@
                     Data de Nascimento:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtDataNascimento" runat="server" TextMode="Date" />
+                    <asp:TextBox ID="txtDataNascimento" ClientIDMode="Static" runat="server" TextMode="Date" />
                 </td>
                 <td>
                     Sexo:
@@ -113,7 +113,7 @@
                     Data de Adimissão:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtDataAdimissao" runat="server" Width="150" TextMode="Date"/>
+                    <asp:TextBox ID="txtDataAdimissao" ClientIDMode="Static" runat="server" Width="150" TextMode="Date"/>
                 </td>
             </tr>
             <tr>
@@ -147,6 +147,18 @@
              $("#txtCep").mask("99999-999");
              $("#txtCpf").mask("999.999.999-99");
          });
+        if (isInternetExplorer()) {
+            jQuery(function ($) {
+                $("#txtDataNascimento").mask("99/99/9999");
+                $("#txtDataAdimissao").mask("99/99/9999");
+            });
+        }
+        function isInternetExplorer() {
+
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+            return msie > 0 || navigator.userAgent.match(/Trident.*rv\:11\./);
+        }
     </script>   
     <style>
         .form-section h4 {
