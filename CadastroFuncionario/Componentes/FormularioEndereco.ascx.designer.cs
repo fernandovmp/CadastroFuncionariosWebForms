@@ -7,74 +7,74 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace CadastroFuncionario
+namespace CadastroFuncionario.Componentes
 {
 
 
-    public partial class Cadastro
+    public partial class FormularioEndereco
     {
 
         /// <summary>
-        /// Controle formularioDadosFuncionario.
+        /// Controle secaoFormulario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::CadastroFuncionario.Componentes.FormularioDadosFuncionario formularioDadosFuncionario;
+        protected global::CadastroFuncionario.Componentes.SecaoFormulario secaoFormulario;
 
         /// <summary>
-        /// Controle formularioEndereco.
+        /// Controle txtCep.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::CadastroFuncionario.Componentes.FormularioEndereco formularioEndereco;
+        protected global::System.Web.UI.WebControls.TextBox txtCep;
 
         /// <summary>
-        /// Controle txtCargo.
+        /// Controle txtRua.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCargo;
+        protected global::System.Web.UI.WebControls.TextBox txtRua;
 
         /// <summary>
-        /// Controle txtDataAdimissao.
+        /// Controle txtNumero.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDataAdimissao;
+        protected global::System.Web.UI.WebControls.TextBox txtNumero;
 
         /// <summary>
-        /// Controle txtCtps.
+        /// Controle txtBairro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCtps;
+        protected global::System.Web.UI.WebControls.TextBox txtBairro;
 
         /// <summary>
-        /// Controle btnSalvar.
+        /// Controle txtCidade.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalvar;
+        protected global::System.Web.UI.WebControls.TextBox txtCidade;
 
         /// <summary>
-        /// Controle btnLimpar.
+        /// Controle txtEstado.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLimpar;
+        protected global::System.Web.UI.WebControls.TextBox txtEstado;
     }
 }

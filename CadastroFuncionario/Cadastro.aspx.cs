@@ -17,10 +17,6 @@ namespace CadastroFuncionario
             if(!Page.IsPostBack)
             {
                 txtCtps.MaxLength = Funcionario.TamanhoMaximoCtps;
-                txtRua.MaxLength = Endereco.TamanhoMaximoRua;
-                txtEstado.MaxLength = Endereco.TamanhoMaximoEstado;
-                txtCidade.MaxLength = Endereco.TamanhoMaximoCidade;
-                txtBairro.MaxLength = Endereco.TamanhoMaximoBairro;
                 txtCargo.MaxLength = Funcao.TamanhoMaximoCargo;
             }
         }
@@ -28,39 +24,8 @@ namespace CadastroFuncionario
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
             Funcionario dadosPessoais = formularioDadosFuncionario.ObterDadosPessoais();
-            Endereco endereco = ObterEndereco();
+            Endereco endereco = formularioEndereco.ObterEndereco();
             Funcao funcao = ObterDadosFuncao();
-        }
-
-        private Endereco ObterEndereco()
-        {
-            bool faltaCamposObrigatorios = this.VerificarSeFaltamCamposObrigatorios(txtCep, txtRua, txtBairro, txtCidade, txtEstado);
-            if (faltaCamposObrigatorios)
-            {
-                return null;
-            }
-            string cepSemMascara = txtCep.Text.Replace("-", "");
-            long cep;
-            if (!long.TryParse(cepSemMascara, out cep))
-            {
-                txtCep.BorderColor = Color.Red;
-                return null;
-            }
-            int numero;
-            if (!int.TryParse(txtNumero.Text, out numero))
-            {
-                txtNumero.BorderColor = Color.Red;
-                return null;
-            }
-            return new Endereco
-            {
-                Bairro = txtBairro.Text,
-                Cep = cep,
-                Cidade = txtCidade.Text,
-                Estado = txtEstado.Text,
-                Numero = numero,
-                Rua = txtRua.Text
-            };
         }
 
         private Funcao ObterDadosFuncao()
@@ -83,8 +48,6 @@ namespace CadastroFuncionario
             };
         }
 
-        
-
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
             LimparFormulario();
@@ -93,9 +56,8 @@ namespace CadastroFuncionario
         private void LimparFormulario()
         {
             formularioDadosFuncionario.Limpar();
-            this.LimparControlesDeTexto(txtCep, txtRua,
-                txtNumero, txtBairro, txtCidade, txtEstado,
-                txtCargo, txtDataAdimissao, txtCtps);
+            formularioEndereco.Limpar();
+            this.LimparControlesDeTexto(txtCargo, txtDataAdimissao, txtCtps);
         }
     }
 }

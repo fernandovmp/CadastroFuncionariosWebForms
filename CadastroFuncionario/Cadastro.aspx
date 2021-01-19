@@ -1,53 +1,10 @@
 ﻿<%@ Page Title="Cadastro" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cadastro.aspx.cs" Inherits="CadastroFuncionario.Cadastro" %>
 <%@ Register TagPrefix="cad" TagName="FormularioDadosFuncionario" Src="~/Componentes/FormularioDadosFuncionario.ascx" %>
+<%@ Register TagPrefix="cad" TagName="FormularioEndereco" Src="~/Componentes/FormularioEndereco.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3 class="text-center">CADASTRO DE FUNCIONÁRIOS</h3>
     <cad:FormularioDadosFuncionario runat="server" ID="formularioDadosFuncionario"/>
-    <section class="form-section">
-        <h4>Endereço</h4>
-        <table class="form-table">
-            <tr>
-                <td>
-                    CEP:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtCep" ClientIDMode="Static" runat="server" Width="100"/>
-                </td>
-                <td>
-                    Rua:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtRua" runat="server" Width="300" />
-                </td>
-                <td>
-                    Nº:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtNumero" runat="server" Width="60" TextMode="Number" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Bairro:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtBairro" runat="server"/>
-                </td>
-                <td>
-                    Cidade:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtCidade" runat="server"/>
-                </td>
-                <td>
-                    Estado:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtEstado" runat="server"/>
-                </td>
-            </tr>
-        </table>
-    </section>
+    <cad:FormularioEndereco runat="server" ID="formularioEndereco" />
     <section class="form-section">
         <h4>Função</h4>
         <table class="form-table">
