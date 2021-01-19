@@ -9,5 +9,15 @@ namespace CadastroFuncionario.Data
         public ContextoFuncionario(string nameOrConnectionString) : base(nameOrConnectionString) { }
 
         public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Funcao> Funcoes { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Funcionario>().ToTable("DadosFuncionario");
+            modelBuilder.Entity<Endereco>().ToTable("EnderecoFuncionario");
+            modelBuilder.Entity<Funcao>().ToTable("FuncaoFuncionario");
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
