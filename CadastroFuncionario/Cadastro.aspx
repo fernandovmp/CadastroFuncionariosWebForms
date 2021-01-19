@@ -1,59 +1,8 @@
 ﻿<%@ Page Title="Cadastro" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cadastro.aspx.cs" Inherits="CadastroFuncionario.Cadastro" %>
+<%@ Register TagPrefix="cad" TagName="FormularioDadosFuncionario" Src="~/Componentes/FormularioDadosFuncionario.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3 class="text-center">CADASTRO DE FUNCIONÁRIOS</h3>
-    <section class="form-section">
-        <h4>Dados Pessoais</h4>
-        <table class="form-table">
-            <tr>
-                <td>
-                    Nome:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtNome" runat="server" Width="300" />
-                </td>
-                <td>
-                    Data de Nascimento:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtDataNascimento" ClientIDMode="Static" runat="server" TextMode="Date" />
-                </td>
-                <td>
-                    Sexo:
-                </td>
-                <td>
-                    <asp:DropDownList ID="drpSexo" runat="server" Width="150" Height="24" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    CPF:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtCpf" ClientIDMode="Static" runat="server" Width="150" />
-                </td>
-                <td class="text-right">
-                    Tel:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtTelefone" ClientIDMode="Static" runat="server"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    RG:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtRg" runat="server" Width="150"/>
-                </td>
-                <td class="text-right">
-                    Orgão Emissor:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtOrgaoEmissor" runat="server" />
-                </td>
-            </tr>
-        </table>
-    </section>
+    <cad:FormularioDadosFuncionario runat="server" ID="formularioDadosFuncionario"/>
     <section class="form-section">
         <h4>Endereço</h4>
         <table class="form-table">
@@ -161,12 +110,6 @@
         }
     </script>   
     <style>
-        .form-section h4 {
-            color: #265a88;
-        }
-        .form-table tr td {
-            padding: 6px;
-        }
         body {
             padding: 0 20px;
         }

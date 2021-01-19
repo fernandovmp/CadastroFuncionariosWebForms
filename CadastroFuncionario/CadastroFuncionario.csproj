@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cadastro.aspx" />
+    <Content Include="Componentes\FormularioDadosFuncionario.ascx" />
     <Content Include="Componentes\SecaoFormulario.ascx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -177,6 +178,13 @@
     </Compile>
     <Compile Include="Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\FormularioDadosFuncionario.ascx.cs">
+      <DependentUpon>FormularioDadosFuncionario.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Componentes\FormularioDadosFuncionario.ascx.designer.cs">
+      <DependentUpon>FormularioDadosFuncionario.ascx</DependentUpon>
     </Compile>
     <Compile Include="Componentes\SecaoFormulario.ascx.cs">
       <DependentUpon>SecaoFormulario.ascx</DependentUpon>

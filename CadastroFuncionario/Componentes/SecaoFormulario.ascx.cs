@@ -15,13 +15,16 @@ namespace CadastroFuncionario.Componentes
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [TemplateInstance(TemplateInstance.Single)]
         public ITemplate Content { get; set; }
+        public event EventHandler ContentInstantiate;
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void CreateChildControls()
         {
-            if(Content != null)
+            if (Content != null)
             {
                 Content.InstantiateIn(contentPlaceHolder);
             }
+            base.CreateChildControls();
+            ContentInstantiate?.Invoke(this, new EventArgs());
         }
 
     }

@@ -12,72 +12,24 @@ namespace CadastroFuncionario
 {
     public partial class Cadastro : System.Web.UI.Page
     {
-        private readonly string[] _sexos = new string[] { "Feminino", "Masculino", "Indefinido" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!Page.IsPostBack)
             {
-                txtNome.MaxLength = Funcionario.TamanhoMaximoNome;
-                txtRg.MaxLength = Funcionario.TamanhoMaximoRg;
                 txtCtps.MaxLength = Funcionario.TamanhoMaximoCtps;
-                txtOrgaoEmissor.MaxLength = Funcionario.TamanhoMaximoOrgaoEmissor;
                 txtRua.MaxLength = Endereco.TamanhoMaximoRua;
                 txtEstado.MaxLength = Endereco.TamanhoMaximoEstado;
                 txtCidade.MaxLength = Endereco.TamanhoMaximoCidade;
                 txtBairro.MaxLength = Endereco.TamanhoMaximoBairro;
                 txtCargo.MaxLength = Funcao.TamanhoMaximoCargo;
-                drpSexo.DataSource = _sexos;
-                drpSexo.DataBind();
             }
         }
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-            Funcionario dadosPessoais = ObterDadosPessoais();
+            Funcionario dadosPessoais = formularioDadosFuncionario.ObterDadosPessoais();
             Endereco endereco = ObterEndereco();
             Funcao funcao = ObterDadosFuncao();
-        }
-
-        private Funcionario ObterDadosPessoais()
-        {
-            bool faltaCamposObrigatorios = this.VerificarSeFaltamCamposObrigatorios(txtNome, txtDataNascimento, txtCpf, 
-                txtTelefone, txtRg, txtOrgaoEmissor);
-            if(faltaCamposObrigatorios)
-            {
-                return null;
-            }
-            string nome = txtNome.Text;
-            DateTime dataNascimento;
-            if(!DateTime.TryParse(txtDataNascimento.Text, out dataNascimento))
-            {
-                txtDataNascimento.BorderColor = Color.Red;
-                return null;
-            }
-            string telefoneSemMascara = txtTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", "");
-            long telefone;
-            if (!long.TryParse(telefoneSemMascara, out telefone))
-            {
-                txtTelefone.BorderColor = Color.Red;
-                return null;
-            }
-            string rg = txtRg.Text.Replace(".", "").Replace("-", "");
-            string cpfSemMascara = txtCpf.Text.Replace(".", "").Replace("-", "");
-            long cpf;
-            if(!long.TryParse(cpfSemMascara, out cpf)) 
-            {
-                txtCpf.BorderColor = Color.Red;
-                return null;
-            }
-            return new Funcionario
-            {
-                Nome = nome,
-                Cpf = cpf,
-                DataNascimento = dataNascimento,
-                OrgaoEmissor = txtOrgaoEmissor.Text,
-                Telefone = telefone,
-                Rg = rg,
-                Sexo = drpSexo.SelectedValue
-            };
         }
 
         private Endereco ObterEndereco()
@@ -140,11 +92,10 @@ namespace CadastroFuncionario
 
         private void LimparFormulario()
         {
-            this.LimparControlesDeTexto(txtNome, txtDataNascimento, txtCpf,
-                txtRg, txtOrgaoEmissor, txtTelefone, txtCep, txtRua,
+            formularioDadosFuncionario.Limpar();
+            this.LimparControlesDeTexto(txtCep, txtRua,
                 txtNumero, txtBairro, txtCidade, txtEstado,
                 txtCargo, txtDataAdimissao, txtCtps);
-            drpSexo.SelectedIndex = 0;
         }
     }
 }
