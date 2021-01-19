@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CadastroFuncionario.Models;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,9 +16,74 @@ namespace CadastroFuncionario
         {
             if(!Page.IsPostBack)
             {
+                txtNome.MaxLength = Funcionario.TamanhoMaximoNome;
+                txtRg.MaxLength = Funcionario.TamanhoMaximoRg;
+                txtCtps.MaxLength = Funcionario.TamanhoMaximoCtps;
+                txtOrgaoEmissor.MaxLength = Funcionario.TamanhoMaximoOrgaoEmissor;
                 drpSexo.DataSource = _sexos;
                 drpSexo.DataBind();
             }
+        }
+
+        protected void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Funcionario dadosPessoais = ObterDadosPessoais();
+        }
+
+        private Funcionario ObterDadosPessoais()
+        {
+            bool faltaCamposObrigatorios = ValidarCamposObrigatorios(txtNome, txtDataNascimento, txtCpf, txtTelefone, txtRg, txtOrgaoEmissor);
+            if(faltaCamposObrigatorios)
+            {
+                return null;
+            }
+            string nome = txtNome.Text;
+            DateTime dataNascimento;
+            if(!DateTime.TryParse(txtDataNascimento.Text, out dataNascimento))
+            {
+                txtDataNascimento.BorderColor = Color.Red;
+                return null;
+            }
+            string telefoneSemMascara = txtTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", "");
+            long telefone;
+            if (!long.TryParse(telefoneSemMascara, out telefone))
+            {
+                txtTelefone.BorderColor = Color.Red;
+                return null;
+            }
+            string rg = txtRg.Text.Replace(".", "").Replace("-", "");
+            string cpfSemMascara = txtCpf.Text.Replace(".", "").Replace("-", "");
+            long cpf;
+            if(!long.TryParse(cpfSemMascara, out cpf)) 
+            {
+                txtCpf.BorderColor = Color.Red;
+                return null;
+            }
+            return new Funcionario
+            {
+                Nome = nome,
+                Cpf = cpf,
+                DataNascimento = dataNascimento,
+                OrgaoEmissor = txtOrgaoEmissor.Text,
+                Telefone = telefone,
+                Rg = rg,
+                Sexo = drpSexo.SelectedValue
+            };
+        }
+
+        private bool ValidarCamposObrigatorios(params TextBox[] textControls) {
+            bool algumNaoFoiPreenchido = false;
+            foreach(TextBox control in textControls)
+            {
+                control.Text = control.Text.Trim();
+                bool naoPreenchido = string.IsNullOrEmpty(control.Text);
+                if(naoPreenchido)
+                {
+                    control.BorderColor = Color.Red;
+                }
+                algumNaoFoiPreenchido = algumNaoFoiPreenchido || naoPreenchido;
+            };
+            return algumNaoFoiPreenchido;
         }
 
         protected void btnLimpar_Click(object sender, EventArgs e)

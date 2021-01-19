@@ -9,7 +9,7 @@
                     Nome:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtNome" runat="server" Width="300"/>
+                    <asp:TextBox ID="txtNome" runat="server" Width="300" />
                 </td>
                 <td>
                     Data de Nascimento:
@@ -130,7 +130,7 @@
         <table class="button-group">
             <tr>
                 <td>
-                    <asp:Button ID="btnSalvar" CssClass="btn btn-primary" runat="server" Text="Salvar" />
+                    <asp:Button ID="btnSalvar" CssClass="btn btn-primary" runat="server" Text="Salvar" OnClick="btnSalvar_Click"/>
                 </td>
                 <td>
                     <asp:Button ID="btnLimpar" CssClass="btn" runat="server" Text="Limpar" OnClick="btnLimpar_Click" />
@@ -143,7 +143,7 @@
     </div>
     <script type="text/javascript">
          jQuery(function ($) {
-             $("#txtTelefone").mask("(099)9999-9999");
+             $("#txtTelefone").mask("(99)09999-9999");
              $("#txtCep").mask("99999-999");
              $("#txtCpf").mask("999.999.999-99");
          });
