@@ -20,6 +20,11 @@ namespace CadastroFuncionario
                 txtRg.MaxLength = Funcionario.TamanhoMaximoRg;
                 txtCtps.MaxLength = Funcionario.TamanhoMaximoCtps;
                 txtOrgaoEmissor.MaxLength = Funcionario.TamanhoMaximoOrgaoEmissor;
+                txtRua.MaxLength = Endereco.TamanhoMaximoRua;
+                txtEstado.MaxLength = Endereco.TamanhoMaximoEstado;
+                txtCidade.MaxLength = Endereco.TamanhoMaximoCidade;
+                txtBairro.MaxLength = Endereco.TamanhoMaximoBairro;
+                
                 drpSexo.DataSource = _sexos;
                 drpSexo.DataBind();
             }
@@ -28,11 +33,12 @@ namespace CadastroFuncionario
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
             Funcionario dadosPessoais = ObterDadosPessoais();
+            Endereco endereco = ObterEndereco();
         }
 
         private Funcionario ObterDadosPessoais()
         {
-            bool faltaCamposObrigatorios = ValidarCamposObrigatorios(txtNome, txtDataNascimento, txtCpf, txtTelefone, txtRg, txtOrgaoEmissor);
+            bool faltaCamposObrigatorios = VerificarSeFaltamCamposObrigatorios(txtNome, txtDataNascimento, txtCpf, txtTelefone, txtRg, txtOrgaoEmissor);
             if(faltaCamposObrigatorios)
             {
                 return null;
@@ -71,7 +77,38 @@ namespace CadastroFuncionario
             };
         }
 
-        private bool ValidarCamposObrigatorios(params TextBox[] textControls) {
+        private Endereco ObterEndereco()
+        {
+            bool faltaCamposObrigatorios = VerificarSeFaltamCamposObrigatorios(txtCep, txtRua, txtBairro, txtCidade, txtEstado);
+            if (faltaCamposObrigatorios)
+            {
+                return null;
+            }
+            string cepSemMascara = txtCep.Text.Replace("-", "");
+            long cep;
+            if (!long.TryParse(cepSemMascara, out cep))
+            {
+                txtCep.BorderColor = Color.Red;
+                return null;
+            }
+            int numero;
+            if (!int.TryParse(txtNumero.Text, out numero))
+            {
+                txtNumero.BorderColor = Color.Red;
+                return null;
+            }
+            return new Endereco
+            {
+                Bairro = txtBairro.Text,
+                Cep = cep,
+                Cidade = txtCidade.Text,
+                Estado = txtEstado.Text,
+                Numero = numero,
+                Rua = txtRua.Text
+            };
+        }
+
+        private bool VerificarSeFaltamCamposObrigatorios(params TextBox[] textControls) {
             bool algumNaoFoiPreenchido = false;
             foreach(TextBox control in textControls)
             {
