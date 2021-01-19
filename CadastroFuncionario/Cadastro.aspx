@@ -2,6 +2,7 @@
 <%@ Register TagPrefix="cad" TagName="FormularioDadosFuncionario" Src="~/Componentes/FormularioDadosFuncionario.ascx" %>
 <%@ Register TagPrefix="cad" TagName="FormularioEndereco" Src="~/Componentes/FormularioEndereco.ascx" %>
 <%@ Register TagPrefix="cad" TagName="FormularioDadosFuncao" Src="~/Componentes/FormularioDadosFuncao.ascx" %>
+<%@ Register TagPrefix="cad" TagName="Popup" Src="~/Componentes/Popup.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3 class="text-center">CADASTRO DE FUNCIONÁRIOS</h3>
     <cad:FormularioDadosFuncionario runat="server" ID="formularioDadosFuncionario"/>
@@ -22,6 +23,7 @@
             </tr>
         </table>
     </div>
+    <cad:Popup runat="server" ID="popup" Titulo="Erro"/>
     <script type="text/javascript">
          jQuery(function ($) {
              $("#txtTelefone").mask("(99)09999-9999");

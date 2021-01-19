@@ -1,4 +1,5 @@
-﻿using CadastroFuncionario.Extensions;
+﻿using CadastroFuncionario.Componentes.Excecoes;
+using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Models;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,16 @@ namespace CadastroFuncionario
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-            Funcionario dadosPessoais = formularioDadosFuncionario.ObterDadosPessoais();
-            Endereco endereco = formularioEndereco.ObterEndereco();
-            Funcao funcao = formularioDadosFuncao.ObterDadosFuncao();
+            try
+            {
+                Funcionario dadosPessoais = formularioDadosFuncionario.ObterDadosPessoais();
+                Endereco endereco = formularioEndereco.ObterEndereco();
+                Funcao funcao = formularioDadosFuncao.ObterDadosFuncao();
+            }
+            catch (ExcecaoFormularioInvalido excecao)
+            {
+                popup.Exibir(excecao.Message);
+            }
         }
 
         protected void btnLimpar_Click(object sender, EventArgs e)
