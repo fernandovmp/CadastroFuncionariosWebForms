@@ -177,6 +177,7 @@
       <DependentUpon>Cadastro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Data\ContextoFuncionario.cs" />
+    <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

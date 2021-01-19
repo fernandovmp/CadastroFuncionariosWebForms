@@ -1,4 +1,5 @@
-﻿using CadastroFuncionario.Models;
+﻿using CadastroFuncionario.Extensions;
+using CadastroFuncionario.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -39,7 +40,8 @@ namespace CadastroFuncionario
 
         private Funcionario ObterDadosPessoais()
         {
-            bool faltaCamposObrigatorios = VerificarSeFaltamCamposObrigatorios(txtNome, txtDataNascimento, txtCpf, txtTelefone, txtRg, txtOrgaoEmissor);
+            bool faltaCamposObrigatorios = this.VerificarSeFaltamCamposObrigatorios(txtNome, txtDataNascimento, txtCpf, 
+                txtTelefone, txtRg, txtOrgaoEmissor);
             if(faltaCamposObrigatorios)
             {
                 return null;
@@ -80,7 +82,7 @@ namespace CadastroFuncionario
 
         private Endereco ObterEndereco()
         {
-            bool faltaCamposObrigatorios = VerificarSeFaltamCamposObrigatorios(txtCep, txtRua, txtBairro, txtCidade, txtEstado);
+            bool faltaCamposObrigatorios = this.VerificarSeFaltamCamposObrigatorios(txtCep, txtRua, txtBairro, txtCidade, txtEstado);
             if (faltaCamposObrigatorios)
             {
                 return null;
@@ -111,7 +113,7 @@ namespace CadastroFuncionario
 
         private Funcao ObterDadosFuncao()
         {
-            bool faltaCamposObrigatorios = VerificarSeFaltamCamposObrigatorios(txtCargo, txtDataAdimissao);
+            bool faltaCamposObrigatorios = this.VerificarSeFaltamCamposObrigatorios(txtCargo, txtDataAdimissao);
             if (faltaCamposObrigatorios)
             {
                 return null;
@@ -129,20 +131,7 @@ namespace CadastroFuncionario
             };
         }
 
-        private bool VerificarSeFaltamCamposObrigatorios(params TextBox[] textControls) {
-            bool algumNaoFoiPreenchido = false;
-            foreach(TextBox control in textControls)
-            {
-                control.Text = control.Text.Trim();
-                bool naoPreenchido = string.IsNullOrEmpty(control.Text);
-                if(naoPreenchido)
-                {
-                    control.BorderColor = Color.Red;
-                }
-                algumNaoFoiPreenchido = algumNaoFoiPreenchido || naoPreenchido;
-            };
-            return algumNaoFoiPreenchido;
-        }
+        
 
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
@@ -151,19 +140,11 @@ namespace CadastroFuncionario
 
         private void LimparFormulario()
         {
-            LimparControlesDeTexto(txtNome, txtDataNascimento, txtCpf,
+            this.LimparControlesDeTexto(txtNome, txtDataNascimento, txtCpf,
                 txtRg, txtOrgaoEmissor, txtTelefone, txtCep, txtRua,
                 txtNumero, txtBairro, txtCidade, txtEstado,
                 txtCargo, txtDataAdimissao, txtCtps);
             drpSexo.SelectedIndex = 0;
-        }
-
-        private void LimparControlesDeTexto(params ITextControl[] textControls)
-        {
-            foreach (ITextControl control in textControls)
-            {
-                control.Text = "";
-            }
         }
     }
 }
