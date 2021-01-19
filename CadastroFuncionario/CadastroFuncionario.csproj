@@ -113,10 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cadastro.aspx" />
+    <Content Include="Componentes\SecaoFormulario.ascx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Componentes\secao_formulario.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -175,6 +177,13 @@
     </Compile>
     <Compile Include="Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\SecaoFormulario.ascx.cs">
+      <DependentUpon>SecaoFormulario.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Componentes\SecaoFormulario.ascx.designer.cs">
+      <DependentUpon>SecaoFormulario.ascx</DependentUpon>
     </Compile>
     <Compile Include="Data\ContextoFuncionario.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />
