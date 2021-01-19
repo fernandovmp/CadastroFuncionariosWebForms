@@ -1,4 +1,5 @@
 ﻿using CadastroFuncionario.Componentes.Excecoes;
+using CadastroFuncionario.Data;
 using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Models;
 using System;
@@ -24,6 +25,20 @@ namespace CadastroFuncionario
                 Funcionario dadosPessoais = formularioDadosFuncionario.ObterDadosPessoais();
                 Endereco endereco = formularioEndereco.ObterEndereco();
                 Funcao funcao = formularioDadosFuncao.ObterDadosFuncao();
+                string ctps = formularioDadosFuncao.ObterCtps();
+                dadosPessoais.Endereco = endereco;
+                dadosPessoais.Funcao = funcao;
+                dadosPessoais.Ctps = ctps;
+                using (ContextoFuncionario db = new ContextoFuncionario())
+                {
+                    bool jaCadastrdado = db.Funcionarios.FirstOrDefault(funcionario => funcionario.Cpf == dadosPessoais.Cpf) != null;
+                    if(jaCadastrdado)
+                    {
+                        return;
+                    }
+                    db.Funcionarios.Add(dadosPessoais);
+                    db.SaveChanges();
+                }
             }
             catch (ExcecaoFormularioInvalido excecao)
             {
