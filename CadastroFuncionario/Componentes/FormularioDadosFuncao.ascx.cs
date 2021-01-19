@@ -38,7 +38,15 @@ namespace CadastroFuncionario.Componentes
             };
         }
 
-        public string ObterCtps() => txtCtps.Text.Trim();
+        public string ObterCtps() 
+        {
+            string ctps = txtCtps.Text.Trim();
+            if(string.IsNullOrEmpty(ctps))
+            {
+                throw new ExcecaoFormularioInvalido("Preencha todos os campos obrigatórios");
+            }
+            return ctps;
+        }
 
         public void Limpar()
         {
