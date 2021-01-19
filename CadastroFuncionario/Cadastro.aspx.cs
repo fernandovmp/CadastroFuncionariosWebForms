@@ -24,7 +24,7 @@ namespace CadastroFuncionario
                 txtEstado.MaxLength = Endereco.TamanhoMaximoEstado;
                 txtCidade.MaxLength = Endereco.TamanhoMaximoCidade;
                 txtBairro.MaxLength = Endereco.TamanhoMaximoBairro;
-                
+                txtCargo.MaxLength = Funcao.TamanhoMaximoCargo;
                 drpSexo.DataSource = _sexos;
                 drpSexo.DataBind();
             }
@@ -34,6 +34,7 @@ namespace CadastroFuncionario
         {
             Funcionario dadosPessoais = ObterDadosPessoais();
             Endereco endereco = ObterEndereco();
+            Funcao funcao = ObterDadosFuncao();
         }
 
         private Funcionario ObterDadosPessoais()
@@ -105,6 +106,26 @@ namespace CadastroFuncionario
                 Estado = txtEstado.Text,
                 Numero = numero,
                 Rua = txtRua.Text
+            };
+        }
+
+        private Funcao ObterDadosFuncao()
+        {
+            bool faltaCamposObrigatorios = VerificarSeFaltamCamposObrigatorios(txtCargo, txtDataAdimissao);
+            if (faltaCamposObrigatorios)
+            {
+                return null;
+            }
+            DateTime dataAdimissao;
+            if (!DateTime.TryParse(txtDataAdimissao.Text, out dataAdimissao))
+            {
+                txtDataAdimissao.BorderColor = Color.Red;
+                return null;
+            }
+            return new Funcao
+            {
+                Cargo = txtCargo.Text,
+                DataAdimissao = dataAdimissao
             };
         }
 
