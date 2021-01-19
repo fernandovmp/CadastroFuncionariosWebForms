@@ -7,56 +7,47 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace CadastroFuncionario
+namespace CadastroFuncionario.Componentes
 {
 
 
-    public partial class Cadastro
+    public partial class FormularioDadosFuncao
     {
 
         /// <summary>
-        /// Controle formularioDadosFuncionario.
+        /// Controle secaoFormulario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::CadastroFuncionario.Componentes.FormularioDadosFuncionario formularioDadosFuncionario;
+        protected global::CadastroFuncionario.Componentes.SecaoFormulario secaoFormulario;
 
         /// <summary>
-        /// Controle formularioEndereco.
+        /// Controle txtCargo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::CadastroFuncionario.Componentes.FormularioEndereco formularioEndereco;
+        protected global::System.Web.UI.WebControls.TextBox txtCargo;
 
         /// <summary>
-        /// Controle formularioDadosFuncao.
+        /// Controle txtDataAdimissao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::CadastroFuncionario.Componentes.FormularioDadosFuncao formularioDadosFuncao;
+        protected global::System.Web.UI.WebControls.TextBox txtDataAdimissao;
 
         /// <summary>
-        /// Controle btnSalvar.
+        /// Controle txtCtps.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalvar;
-
-        /// <summary>
-        /// Controle btnLimpar.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLimpar;
+        protected global::System.Web.UI.WebControls.TextBox txtCtps;
     }
 }

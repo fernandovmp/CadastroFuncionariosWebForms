@@ -1,37 +1,12 @@
 ﻿<%@ Page Title="Cadastro" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cadastro.aspx.cs" Inherits="CadastroFuncionario.Cadastro" %>
 <%@ Register TagPrefix="cad" TagName="FormularioDadosFuncionario" Src="~/Componentes/FormularioDadosFuncionario.ascx" %>
 <%@ Register TagPrefix="cad" TagName="FormularioEndereco" Src="~/Componentes/FormularioEndereco.ascx" %>
+<%@ Register TagPrefix="cad" TagName="FormularioDadosFuncao" Src="~/Componentes/FormularioDadosFuncao.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3 class="text-center">CADASTRO DE FUNCIONÁRIOS</h3>
     <cad:FormularioDadosFuncionario runat="server" ID="formularioDadosFuncionario"/>
     <cad:FormularioEndereco runat="server" ID="formularioEndereco" />
-    <section class="form-section">
-        <h4>Função</h4>
-        <table class="form-table">
-            <tr>
-                <td>
-                    Cargo:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtCargo" runat="server" Width="300"/>
-                </td>
-                <td>
-                    Data de Adimissão:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtDataAdimissao" ClientIDMode="Static" runat="server" Width="150" TextMode="Date"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    CTPS:
-                </td>
-                <td>
-                    <asp:TextBox ID="txtCtps" runat="server" Width="150"/>
-                </td>
-            </tr>
-        </table>
-    </section>
+    <cad:FormularioDadosFuncao runat="server" ID="formularioDadosFuncao" />
     <div class="text-center">
         <table class="button-group">
             <tr>

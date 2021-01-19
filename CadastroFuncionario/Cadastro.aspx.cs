@@ -14,38 +14,13 @@ namespace CadastroFuncionario
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
-            {
-                txtCtps.MaxLength = Funcionario.TamanhoMaximoCtps;
-                txtCargo.MaxLength = Funcao.TamanhoMaximoCargo;
-            }
         }
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
             Funcionario dadosPessoais = formularioDadosFuncionario.ObterDadosPessoais();
             Endereco endereco = formularioEndereco.ObterEndereco();
-            Funcao funcao = ObterDadosFuncao();
-        }
-
-        private Funcao ObterDadosFuncao()
-        {
-            bool faltaCamposObrigatorios = this.VerificarSeFaltamCamposObrigatorios(txtCargo, txtDataAdimissao);
-            if (faltaCamposObrigatorios)
-            {
-                return null;
-            }
-            DateTime dataAdimissao;
-            if (!DateTime.TryParse(txtDataAdimissao.Text, out dataAdimissao))
-            {
-                txtDataAdimissao.BorderColor = Color.Red;
-                return null;
-            }
-            return new Funcao
-            {
-                Cargo = txtCargo.Text,
-                DataAdimissao = dataAdimissao
-            };
+            Funcao funcao = formularioDadosFuncao.ObterDadosFuncao();
         }
 
         protected void btnLimpar_Click(object sender, EventArgs e)
@@ -57,7 +32,7 @@ namespace CadastroFuncionario
         {
             formularioDadosFuncionario.Limpar();
             formularioEndereco.Limpar();
-            this.LimparControlesDeTexto(txtCargo, txtDataAdimissao, txtCtps);
+            formularioDadosFuncao.Limpar();
         }
     }
 }
