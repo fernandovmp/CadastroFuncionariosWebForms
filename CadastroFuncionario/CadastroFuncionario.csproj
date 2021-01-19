@@ -116,11 +116,13 @@
     <Content Include="Componentes\FormularioDadosFuncao.ascx" />
     <Content Include="Componentes\FormularioDadosFuncionario.ascx" />
     <Content Include="Componentes\FormularioEndereco.ascx" />
+    <Content Include="Componentes\Popup.ascx" />
     <Content Include="Componentes\SecaoFormulario.ascx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Componentes\popup.css" />
     <Content Include="Content\Componentes\secao_formulario.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
@@ -201,6 +203,13 @@
     </Compile>
     <Compile Include="Componentes\FormularioEndereco.ascx.designer.cs">
       <DependentUpon>FormularioEndereco.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\Popup.ascx.cs">
+      <DependentUpon>Popup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Componentes\Popup.ascx.designer.cs">
+      <DependentUpon>Popup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Componentes\SecaoFormulario.ascx.cs">
       <DependentUpon>SecaoFormulario.ascx</DependentUpon>

@@ -16,6 +16,7 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="Content/Componentes/secao_formulario.css" />
+    <link rel="stylesheet" href="Content/Componentes/popup.css" />
 </head>
 <body>
     <form runat="server">

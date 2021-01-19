@@ -1,0 +1,16 @@
+﻿.popup-panel {
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: 30%;
+    bottom: 30%;
+    padding: 30px;
+}
+
+.popup-button-container {
+    margin-bottom: 20px;
+}
+
+.popup-ok-button {
+    display: inline;
+}
