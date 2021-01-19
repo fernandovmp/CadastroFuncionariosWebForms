@@ -23,9 +23,7 @@ namespace CadastroFuncionario.Models
         public long Telefone { get; set; }
         [Required, StringLength(TamanhoMaximoCtps)]
         public string Ctps { get; set; }
-        public int EnderecoID { get; set; }
         public Endereco Endereco { get; set; }
-        public int FuncaoID { get; set; }
         public Funcao Funcao { get; set; }
         public const int TamanhoMaximoNome = 100;
         public const int TamanhoMaximoRg = 15;
