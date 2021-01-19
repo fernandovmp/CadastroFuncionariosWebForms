@@ -1,4 +1,5 @@
-﻿using CadastroFuncionario.Extensions;
+﻿using CadastroFuncionario.Componentes.Excecoes;
+using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Models;
 using System;
 using System.Drawing;
@@ -24,20 +25,20 @@ namespace CadastroFuncionario.Componentes
             bool faltaCamposObrigatorios = this.VerificarSeFaltamCamposObrigatorios(txtCep, txtRua, txtBairro, txtCidade, txtEstado);
             if (faltaCamposObrigatorios)
             {
-                return null;
+                throw new ExcecaoFormularioInvalido("Preencha todos os campos obrigatórios");
             }
             string cepSemMascara = txtCep.Text.Replace("-", "");
             long cep;
             if (!long.TryParse(cepSemMascara, out cep))
             {
                 txtCep.BorderColor = Color.Red;
-                return null;
+                throw new ExcecaoFormularioInvalido("Informe um CEP válido");
             }
             int numero;
             if (!int.TryParse(txtNumero.Text, out numero))
             {
                 txtNumero.BorderColor = Color.Red;
-                return null;
+                throw new ExcecaoFormularioInvalido("Informe um número válido");
             }
             return new Endereco
             {

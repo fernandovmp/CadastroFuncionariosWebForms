@@ -183,6 +183,7 @@
     <Compile Include="Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Componentes\Excecoes\ExcecaoFormularioInvalido.cs" />
     <Compile Include="Componentes\FormularioDadosFuncao.ascx.cs">
       <DependentUpon>FormularioDadosFuncao.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

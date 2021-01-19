@@ -1,4 +1,5 @@
-﻿using CadastroFuncionario.Extensions;
+﻿using CadastroFuncionario.Componentes.Excecoes;
+using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Models;
 using System;
 using System.Drawing;
@@ -22,13 +23,13 @@ namespace CadastroFuncionario.Componentes
             bool faltaCamposObrigatorios = this.VerificarSeFaltamCamposObrigatorios(txtCargo, txtDataAdimissao);
             if (faltaCamposObrigatorios)
             {
-                return null;
+                throw new ExcecaoFormularioInvalido("Preencha todos os campos obrigatórios");
             }
             DateTime dataAdimissao;
             if (!DateTime.TryParse(txtDataAdimissao.Text, out dataAdimissao))
             {
                 txtDataAdimissao.BorderColor = Color.Red;
-                return null;
+                throw new ExcecaoFormularioInvalido("Informe uma data válida");
             }
             return new Funcao
             {

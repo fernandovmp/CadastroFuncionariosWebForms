@@ -1,4 +1,5 @@
-﻿using CadastroFuncionario.Extensions;
+﻿using CadastroFuncionario.Componentes.Excecoes;
+using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Models;
 using System;
 using System.Drawing;
@@ -28,21 +29,21 @@ namespace CadastroFuncionario.Componentes
                 txtTelefone, txtRg, txtOrgaoEmissor);
             if (faltaCamposObrigatorios)
             {
-                return null;
+                throw new ExcecaoFormularioInvalido("Preencha todos os campos obrigatórios");
             }
             string nome = txtNome.Text;
             DateTime dataNascimento;
             if (!DateTime.TryParse(txtDataNascimento.Text, out dataNascimento))
             {
                 txtDataNascimento.BorderColor = Color.Red;
-                return null;
+                throw new ExcecaoFormularioInvalido("Informe uma data válida");
             }
             string telefoneSemMascara = txtTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", "");
             long telefone;
             if (!long.TryParse(telefoneSemMascara, out telefone))
             {
                 txtTelefone.BorderColor = Color.Red;
-                return null;
+                throw new ExcecaoFormularioInvalido("Informe um telefone válido");
             }
             string rg = txtRg.Text.Replace(".", "").Replace("-", "");
             string cpfSemMascara = txtCpf.Text.Replace(".", "").Replace("-", "");
@@ -50,7 +51,7 @@ namespace CadastroFuncionario.Componentes
             if (!long.TryParse(cpfSemMascara, out cpf))
             {
                 txtCpf.BorderColor = Color.Red;
-                return null;
+                throw new ExcecaoFormularioInvalido("Informe um CPF válido");
             }
             return new Funcionario
             {
