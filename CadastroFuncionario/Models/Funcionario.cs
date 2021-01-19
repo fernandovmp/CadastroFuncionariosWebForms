@@ -7,13 +7,15 @@ namespace CadastroFuncionario.Models
     {
         [Key, ScaffoldColumn(false)]
         public int Id { get; set; }
+        [Required, StringLength(TamanhoMaximoNome)]
+        public string Nome { get; set; }
         [Required]
         public long Cpf { get; set; }
-        [Required]
-        public long Rg { get; set; }
+        [Required, StringLength(TamanhoMaximoRg)]
+        public string Rg { get; set; }
         [Required]
         public DateTime DataNascimento { get; set; }
-        [Required, StringLength(10)]
+        [Required, StringLength(TamanhMaximoSexo)]
         public string Sexo { get; set; }
         [Required, StringLength(TamanhoMaximoOrgaoEmissor)]
         public string OrgaoEmissor { get; set; }
@@ -25,8 +27,10 @@ namespace CadastroFuncionario.Models
         public Endereco Endereco { get; set; }
         public int FuncaoID { get; set; }
         public Funcao Funcao { get; set; }
-
+        public const int TamanhoMaximoNome = 100;
+        public const int TamanhoMaximoRg = 15;
         public const int TamanhoMaximoOrgaoEmissor = 100;
         public const int TamanhoMaximoCtps = 15;
+        public const int TamanhMaximoSexo = 10;
     }
 }
