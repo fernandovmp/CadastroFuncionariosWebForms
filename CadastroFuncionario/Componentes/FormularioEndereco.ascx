@@ -44,6 +44,14 @@
                     <asp:TextBox ID="txtEstado" runat="server"/>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    Complemento:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtComplemento" runat="server" />
+                </td>
+            </tr>
         </table>
     </Content>
 </cad:SecaoFormulario>

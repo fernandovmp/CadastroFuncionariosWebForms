@@ -17,6 +17,7 @@ namespace CadastroFuncionario.Componentes
                 txtEstado.MaxLength = Endereco.TamanhoMaximoEstado;
                 txtCidade.MaxLength = Endereco.TamanhoMaximoCidade;
                 txtBairro.MaxLength = Endereco.TamanhoMaximoBairro;
+                txtComplemento.MaxLength = Endereco.TamanhoMaximoComplemento;
             }
         }
 
@@ -45,6 +46,7 @@ namespace CadastroFuncionario.Componentes
                 Bairro = txtBairro.Text,
                 Cep = cep,
                 Cidade = txtCidade.Text,
+                Complemento = txtComplemento.Text.Trim(),
                 Estado = txtEstado.Text,
                 Numero = numero,
                 Rua = txtRua.Text
