@@ -232,6 +232,11 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101192109050_InitialCreate.cs" />
+    <Compile Include="Migrations\202101192109050_InitialCreate.designer.cs">
+      <DependentUpon>202101192109050_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Funcao.cs" />
     <Compile Include="Models\Funcionario.cs" />
@@ -272,6 +277,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101192109050_InitialCreate.resx">
+      <DependentUpon>202101192109050_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
