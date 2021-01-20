@@ -236,6 +236,10 @@
     <Compile Include="Migrations\202101192109050_InitialCreate.designer.cs">
       <DependentUpon>202101192109050_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101201802594_CricaoDasEntides.cs" />
+    <Compile Include="Migrations\202101201802594_CricaoDasEntides.designer.cs">
+      <DependentUpon>202101201802594_CricaoDasEntides.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Funcao.cs" />
@@ -281,6 +285,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202101192109050_InitialCreate.resx">
       <DependentUpon>202101192109050_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101201802594_CricaoDasEntides.resx">
+      <DependentUpon>202101201802594_CricaoDasEntides.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
