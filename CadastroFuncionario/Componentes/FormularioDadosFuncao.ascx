@@ -25,6 +25,15 @@
                 <td>
                     <asp:TextBox ID="txtCtps" runat="server" Width="150"/>
                 </td>
+                <td>
+                    Envio de documentos:
+                </td>
+                <td>
+                    <div class="btn btn-primary upload-file">
+                        Anexar
+                        <asp:FileUpload ID="uploadDocumento" runat="server" />
+                    </div>
+                </td>
             </tr>
         </table>
     </Content>

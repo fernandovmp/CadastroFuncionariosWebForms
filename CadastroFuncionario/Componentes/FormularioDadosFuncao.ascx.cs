@@ -3,6 +3,7 @@ using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Models;
 using System;
 using System.Drawing;
+using System.Web;
 using System.Web.UI;
 
 namespace CadastroFuncionario.Componentes
@@ -46,6 +47,20 @@ namespace CadastroFuncionario.Componentes
                 throw new ExcecaoFormularioInvalido("Preencha todos os campos obrigatórios");
             }
             return ctps;
+        }
+
+        public HttpPostedFile ObterDocumento()
+        {
+            const long TamnhoMaximoDocumento = 50 * 1048576;
+            if(!uploadDocumento.HasFile)
+            {
+                throw new ExcecaoFormularioInvalido("Anexe um documento antes de prosseguir");
+            }
+            if (uploadDocumento.PostedFile.ContentLength > TamnhoMaximoDocumento)
+            {
+                throw new ExcecaoFormularioInvalido("O documento não deve exceder 50MB");
+            }
+            return uploadDocumento.PostedFile;
         }
 
         public void Limpar()
