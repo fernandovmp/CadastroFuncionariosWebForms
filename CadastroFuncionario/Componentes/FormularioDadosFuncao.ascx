@@ -15,7 +15,7 @@
                     Data de Adimissão:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtDataAdimissao" ClientIDMode="Static" runat="server" Width="150" TextMode="Date"/>
+                    <asp:TextBox ID="txtDataAdimissao" ClientIDMode="Static" runat="server" Width="150" TextMode="Date" CssClass="campo-data"/>
                 </td>
             </tr>
             <tr>

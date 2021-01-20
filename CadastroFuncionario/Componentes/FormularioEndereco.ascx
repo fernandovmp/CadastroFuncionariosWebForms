@@ -9,7 +9,7 @@
                     CEP:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtCep" ClientIDMode="Static" runat="server" Width="100"/>
+                    <asp:TextBox ID="txtCep" runat="server" Width="100" CssClass="campo-cep"/>
                 </td>
                 <td>
                     Rua:

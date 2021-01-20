@@ -24,25 +24,6 @@
         </table>
     </div>
     <cad:Popup runat="server" ID="popup" Titulo="Erro"/>
-    <script type="text/javascript">
-         jQuery(function ($) {
-             $("#txtTelefone").mask("(99)09999-9999");
-             $("#txtCep").mask("99999-999");
-             $("#txtCpf").mask("999.999.999-99");
-         });
-        if (isInternetExplorer()) {
-            jQuery(function ($) {
-                $("#txtDataNascimento").mask("99/99/9999");
-                $("#txtDataAdimissao").mask("99/99/9999");
-            });
-        }
-        function isInternetExplorer() {
-
-            var ua = window.navigator.userAgent;
-            var msie = ua.indexOf("MSIE ");
-            return msie > 0 || navigator.userAgent.match(/Trident.*rv\:11\./);
-        }
-    </script>   
     <style>
         body {
             padding: 0 20px;

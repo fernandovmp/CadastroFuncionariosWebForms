@@ -57,12 +57,7 @@
         </tbody>
     </table>
     <asp:HiddenField ID="nomeDocumento" runat="server" />
-    <cad:Popup runat="server" ID="popup" Titulo="Erro"/>
-    <script type="text/javascript">
-         jQuery(function ($) {
-             $(".campo-cpf").mask("999.999.999-99");
-         });
-    </script>   
+    <cad:Popup runat="server" ID="popup" Titulo="Erro"/> 
     <style>
         body {
             padding: 0 20px;

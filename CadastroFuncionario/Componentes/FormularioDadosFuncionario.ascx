@@ -15,7 +15,7 @@
                     Data de Nascimento:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtDataNascimento" ClientIDMode="Static" runat="server" TextMode="Date" />
+                    <asp:TextBox ID="txtDataNascimento" runat="server" TextMode="Date" CssClass="campo-data"/>
                 </td>
                 <td>
                     Sexo:
@@ -29,13 +29,13 @@
                     CPF:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtCpf" ClientIDMode="Static" runat="server" Width="150" />
+                    <asp:TextBox ID="txtCpf" runat="server" Width="150" CssClass="campo-cpf"/>
                 </td>
                 <td class="text-right">
                     Tel:
                 </td>
                 <td>
-                    <asp:TextBox ID="txtTelefone" ClientIDMode="Static" runat="server"/>
+                    <asp:TextBox ID="txtTelefone" runat="server" CssClass="campo-telefone"/>
                 </td>
             </tr>
             <tr>
