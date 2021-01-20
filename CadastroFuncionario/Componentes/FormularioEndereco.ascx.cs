@@ -35,11 +35,16 @@ namespace CadastroFuncionario.Componentes
                 txtCep.BorderColor = Color.Red;
                 throw new ExcecaoFormularioInvalido("Informe um CEP válido");
             }
-            int numero = 0;
-            if (txtNumero.Text.Length > 0 && !int.TryParse(txtNumero.Text, out numero))
+            int? numero = null;
+            int numeroInformado;
+            if (txtNumero.Text.Length > 0)
             {
-                txtNumero.BorderColor = Color.Red;
-                throw new ExcecaoFormularioInvalido("Informe um número válido");
+                if (!int.TryParse(txtNumero.Text, out numeroInformado))
+                {
+                    txtNumero.BorderColor = Color.Red;
+                    throw new ExcecaoFormularioInvalido("Informe um número válido");
+                }
+                numero = numeroInformado;
             }
             return new Endereco
             {
