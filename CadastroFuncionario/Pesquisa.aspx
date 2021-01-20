@@ -5,13 +5,13 @@
     <section class="text-center">
         <label>
             CPF:
-            <asp:TextBox runat="server" ID="txtCpf" ClientIDMode="Static"/>
+            <asp:TextBox runat="server" ID="txtCpf" CssClass="campo-cpf"/>
         </label>
          <div class="text-center" style="margin-top: 30px;">
         <table class="button-group">
             <tr>
                 <td>
-                    <asp:Button ID="btnPesquisar" CssClass="btn btn-success" runat="server" Text="Salvar" OnClick="btnPesquisar_Click"/>
+                    <asp:Button ID="btnPesquisar" CssClass="btn btn-success" runat="server" Text="Pesquisar" OnClick="btnPesquisar_Click"/>
                 </td>
                 <td>
                     <asp:Button ID="btnLimpar" CssClass="btn" runat="server" Text="Limpar" OnClick="btnLimpar_Click" />
@@ -22,12 +22,46 @@
             </tr>
         </table>
     </div>
+    <table runat="server" id="tabelaResultadoPesquisa" visible="false" class="table table-striped table-bordered text-left" style="margin-top: 16px;">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data Nascimento</th>
+                <th>Função</th>
+                <th>Data Adimissão</th>
+                <th>Anexos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <asp:Label runat="server" ID="lblNome" />
+                </td>
+                <td>
+                    <asp:Label runat="server" ID="lblCpf" CssClass="campo-cpf"/>
+                </td>
+                <td>
+                    <asp:Label runat="server" ID="lblDataNascimento" />
+                </td>
+                <td>
+                    <asp:Label runat="server" ID="lblFuncao" />
+                </td>
+                <td>
+                    <asp:Label runat="server" ID="lblDataAdimissao" />
+                </td>
+                <td>
+                    <asp:LinkButton runat="server" Text="Documentos" ID="btnDocumentos" OnClick="btnDocumentos_Click"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <asp:HiddenField ID="nomeDocumento" runat="server" />
     <cad:Popup runat="server" ID="popup" Titulo="Erro"/>
     <script type="text/javascript">
          jQuery(function ($) {
-             $("#txtCpf").mask("999.999.999-99");
+             $(".campo-cpf").mask("999.999.999-99");
          });
-        }
     </script>   
     <style>
         body {
