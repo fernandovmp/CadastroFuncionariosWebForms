@@ -15,7 +15,6 @@ namespace CadastroFuncionario.Componentes
         public void Exibir(string mensagem)
         {
             popupPanel.Visible = true;
-            popupPanel.GroupingText = Titulo;
             Mensagem = mensagem;
         }
 

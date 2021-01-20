@@ -1,14 +1,24 @@
 ﻿.popup-panel {
     position: absolute;
-    left: 30%;
-    right: 30%;
-    top: 30%;
-    bottom: 30%;
-    padding: 30px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
 .popup-button-container {
-    margin-bottom: 20px;
+    margin: 10% 0;
+    display: inline-block;
+    background-color: #FAFAFA;
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: #333;
+    padding: 10px;
+    box-shadow: 0 0 12px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 0 12px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 12px 0px rgba(0,0,0,0.75);
+    text-align: left;
 }
 
 .popup-ok-button {
