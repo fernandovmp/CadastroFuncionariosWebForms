@@ -139,6 +139,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Home.aspx" />
+    <Content Include="Pesquisa.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -244,6 +245,13 @@
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Funcao.cs" />
     <Compile Include="Models\Funcionario.cs" />
+    <Compile Include="Pesquisa.aspx.cs">
+      <DependentUpon>Pesquisa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pesquisa.aspx.designer.cs">
+      <DependentUpon>Pesquisa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicos\SalvarDocumentoAnexadoServico.cs" />
     <Compile Include="Site.Master.cs">
