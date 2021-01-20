@@ -1,6 +1,7 @@
 ﻿using CadastroFuncionario.Componentes.Excecoes;
 using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Models;
+using CadastroFuncionario.Validacoes;
 using System;
 using System.Drawing;
 using System.Web.UI;
@@ -48,7 +49,7 @@ namespace CadastroFuncionario.Componentes
             string rg = txtRg.Text.Replace(".", "").Replace("-", "");
             string cpfSemMascara = txtCpf.Text.Replace(".", "").Replace("-", "");
             long cpf;
-            if (!long.TryParse(cpfSemMascara, out cpf))
+            if (!long.TryParse(cpfSemMascara, out cpf) || ValidadorCpf.NaoEhValido(cpf))
             {
                 txtCpf.BorderColor = Color.Red;
                 throw new ExcecaoFormularioInvalido("Informe um CPF válido");
