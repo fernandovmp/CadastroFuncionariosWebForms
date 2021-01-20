@@ -21,7 +21,7 @@ namespace CadastroFuncionario
 
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
-
+            txtCpf.Text = "";
         }
     }
 }
