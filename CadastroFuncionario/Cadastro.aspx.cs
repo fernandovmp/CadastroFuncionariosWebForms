@@ -36,7 +36,8 @@ namespace CadastroFuncionario
                 dadosPessoais.Documento = salvarDocumentoServico.NomeDocumento;
                 string raizParaSalvar = WebConfigurationManager.AppSettings["CaminhoDocumentosAnexados"];
                 salvarDocumentoServico.SalvarDocumento(raizParaSalvar);
-                using (ContextoFuncionario db = new ContextoFuncionario())
+                string connectionString = WebConfigurationManager.ConnectionStrings["CadastroFuncionario"].ConnectionString;
+                using (ContextoFuncionario db = new ContextoFuncionario(connectionString))
                 {
                     bool jaCadastrdado = db.Funcionarios.FirstOrDefault(funcionario => funcionario.Cpf == dadosPessoais.Cpf) != null;
                     if(jaCadastrdado)
