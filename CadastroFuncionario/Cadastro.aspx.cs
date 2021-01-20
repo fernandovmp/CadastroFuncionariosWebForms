@@ -36,21 +36,26 @@ namespace CadastroFuncionario
                 dadosPessoais.Documento = salvarDocumentoServico.NomeDocumento;
                 string raizParaSalvar = WebConfigurationManager.AppSettings["CaminhoDocumentosAnexados"];
                 salvarDocumentoServico.SalvarDocumento(raizParaSalvar);
-                string connectionString = WebConfigurationManager.ConnectionStrings["CadastroFuncionario"].ConnectionString;
-                using (ContextoFuncionario db = new ContextoFuncionario(connectionString))
-                {
-                    bool jaCadastrdado = db.Funcionarios.FirstOrDefault(funcionario => funcionario.Cpf == dadosPessoais.Cpf) != null;
-                    if(jaCadastrdado)
-                    {
-                        return;
-                    }
-                    db.Funcionarios.Add(dadosPessoais);
-                    db.SaveChanges();
-                }
+                CadastrarFuncionario(dadosPessoais);
             }
             catch (ExcecaoFormularioInvalido excecao)
             {
                 popup.Exibir(excecao.Message);
+            }
+        }
+
+        private void CadastrarFuncionario(Funcionario dadosPessoais)
+        {
+            string connectionString = WebConfigurationManager.ConnectionStrings["CadastroFuncionario"].ConnectionString;
+            using (ContextoFuncionario db = new ContextoFuncionario(connectionString))
+            {
+                bool jaCadastrdado = db.Funcionarios.FirstOrDefault(funcionario => funcionario.Cpf == dadosPessoais.Cpf) != null;
+                if (jaCadastrdado)
+                {
+                    return;
+                }
+                db.Funcionarios.Add(dadosPessoais);
+                db.SaveChanges();
             }
         }
 
