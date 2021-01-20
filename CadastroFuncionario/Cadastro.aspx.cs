@@ -2,11 +2,13 @@
 using CadastroFuncionario.Data;
 using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Models;
+using CadastroFuncionario.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -26,9 +28,14 @@ namespace CadastroFuncionario
                 Endereco endereco = formularioEndereco.ObterEndereco();
                 Funcao funcao = formularioDadosFuncao.ObterDadosFuncao();
                 string ctps = formularioDadosFuncao.ObterCtps();
+                HttpPostedFile documento = formularioDadosFuncao.ObterDocumento();
+                var salvarDocumentoServico = new SalvarDocumentoAnexadoServico(documento);
                 dadosPessoais.Endereco = endereco;
                 dadosPessoais.Funcao = funcao;
                 dadosPessoais.Ctps = ctps;
+                dadosPessoais.Documento = salvarDocumentoServico.NomeDocumento;
+                string raizParaSalvar = WebConfigurationManager.AppSettings["CaminhoDocumentosAnexados"];
+                salvarDocumentoServico.SalvarDocumento(raizParaSalvar);
                 using (ContextoFuncionario db = new ContextoFuncionario())
                 {
                     bool jaCadastrdado = db.Funcionarios.FirstOrDefault(funcionario => funcionario.Cpf == dadosPessoais.Cpf) != null;

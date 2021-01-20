@@ -8,7 +8,7 @@
     <cad:FormularioDadosFuncionario runat="server" ID="formularioDadosFuncionario"/>
     <cad:FormularioEndereco runat="server" ID="formularioEndereco" />
     <cad:FormularioDadosFuncao runat="server" ID="formularioDadosFuncao" />
-    <div class="text-center">
+    <div class="text-center" style="margin-top: 30px;">
         <table class="button-group">
             <tr>
                 <td>
