@@ -12,7 +12,7 @@
         <table class="button-group">
             <tr>
                 <td>
-                    <asp:Button ID="btnSalvar" CssClass="btn btn-primary" runat="server" Text="Salvar" OnClick="btnSalvar_Click"/>
+                    <asp:Button ID="btnSalvar" CssClass="btn btn-success" runat="server" Text="Salvar" OnClick="btnSalvar_Click"/>
                 </td>
                 <td>
                     <asp:Button ID="btnLimpar" CssClass="btn" runat="server" Text="Limpar" OnClick="btnLimpar_Click" />
