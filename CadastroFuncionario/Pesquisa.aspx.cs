@@ -34,7 +34,7 @@ namespace CadastroFuncionario
                 {
                     Funcionario funcionario = db.Funcionarios
                         .AsNoTracking()
-                        .FirstOrDefault();
+                        .FirstOrDefault(func => func.Cpf == cpf);
                     if(funcionario == null)
                     {
                         popup.Exibir("CPF não encontrado");
@@ -42,7 +42,7 @@ namespace CadastroFuncionario
                     }
                     funcionario.Funcao = db.Funcoes
                         .AsNoTracking()
-                        .FirstOrDefault();
+                        .FirstOrDefault(func => func.FuncionarioID == funcionario.Id);
                     ExibirResultadoPesquisa(funcionario);
                 }
             }
