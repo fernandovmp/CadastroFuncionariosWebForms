@@ -51,12 +51,12 @@ namespace CadastroFuncionario.Componentes
 
         public HttpPostedFile ObterDocumento()
         {
-            const long TamnhoMaximoDocumento = 50 * 1048576;
+            const long TamanhoMaximoDocumento = 50 * 1048576;
             if(!uploadDocumento.HasFile)
             {
                 throw new ExcecaoFormularioInvalido("Anexe um documento antes de prosseguir");
             }
-            if (uploadDocumento.PostedFile.ContentLength > TamnhoMaximoDocumento)
+            if (uploadDocumento.PostedFile.ContentLength > TamanhoMaximoDocumento)
             {
                 throw new ExcecaoFormularioInvalido("O documento não deve exceder 50MB");
             }
