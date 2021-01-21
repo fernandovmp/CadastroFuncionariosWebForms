@@ -1,5 +1,6 @@
 ﻿using CadastroFuncionario.Componentes.Excecoes;
 using CadastroFuncionario.Data;
+using CadastroFuncionario.Logger;
 using CadastroFuncionario.Models;
 using CadastroFuncionario.Validacoes;
 using System;
@@ -24,6 +25,7 @@ namespace CadastroFuncionario
         protected void btnPesquisar_Click(object sender, EventArgs e)
         {
             tabelaResultadoPesquisa.Visible = false;
+            ILogger logger = new TxtLogger();
             try
             {
                 long cpf = ObterCpf();
@@ -47,6 +49,11 @@ namespace CadastroFuncionario
             catch (ExcecaoFormularioInvalido excecao)
             {
                 popup.Exibir(excecao.Message);
+            }
+            catch (Exception execao)
+            {
+                logger.Log(DateTime.Now, execao.ToString());
+                popup.Exibir("Oops! Ocorreu um erro durante o cadastro");
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using CadastroFuncionario.Componentes.Excecoes;
 using CadastroFuncionario.Data;
 using CadastroFuncionario.Extensions;
+using CadastroFuncionario.Logger;
 using CadastroFuncionario.Models;
 using CadastroFuncionario.Servicos;
 using System;
@@ -22,6 +23,7 @@ namespace CadastroFuncionario
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
+            ILogger logger = new TxtLogger();
             try
             {
                 Funcionario dadosPessoais = formularioDadosFuncionario.ObterDadosPessoais();
@@ -41,6 +43,11 @@ namespace CadastroFuncionario
             catch (ExcecaoFormularioInvalido excecao)
             {
                 popup.Exibir(excecao.Message);
+            }
+            catch (Exception execao)
+            {
+                logger.Log(DateTime.Now, execao.ToString());
+                popup.Exibir("Oops! Ocorreu um erro durante o cadastro");
             }
         }
 
