@@ -53,7 +53,7 @@ namespace CadastroFuncionario
             catch (Exception execao)
             {
                 logger.Log(DateTime.Now, execao.ToString());
-                popup.Exibir("Oops! Ocorreu um erro durante o cadastro");
+                popup.Exibir("Oops! Ocorreu um erro durante a pesquisa");
             }
         }
 
