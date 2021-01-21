@@ -33,6 +33,15 @@ namespace CadastroFuncionario.Componentes
         protected global::System.Web.UI.WebControls.TextBox txtCep;
 
         /// <summary>
+        /// Controle btnPesquisarCep.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnPesquisarCep;
+
+        /// <summary>
         /// Controle txtRua.
         /// </summary>
         /// <remarks>

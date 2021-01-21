@@ -305,6 +305,10 @@
       <Project>{b265a336-6ec1-4dc6-9a48-713523d9fbe4}</Project>
       <Name>CadastroFuncionario.Logger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CadastroFuncionarios.CepModulo\CadastroFuncionarios.CepModulo.csproj">
+      <Project>{d427ba7c-f502-41c7-a410-5a502eb8187f}</Project>
+      <Name>CadastroFuncionarios.CepModulo</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

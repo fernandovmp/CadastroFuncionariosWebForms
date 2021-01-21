@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Cadastro" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cadastro.aspx.cs" Inherits="CadastroFuncionario.Cadastro" %>
+﻿<%@ Page Title="Cadastro" Language="C#" Async="true" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cadastro.aspx.cs" Inherits="CadastroFuncionario.Cadastro" %>
 <%@ Register TagPrefix="cad" TagName="FormularioDadosFuncionario" Src="~/Componentes/FormularioDadosFuncionario.ascx" %>
 <%@ Register TagPrefix="cad" TagName="FormularioEndereco" Src="~/Componentes/FormularioEndereco.ascx" %>
 <%@ Register TagPrefix="cad" TagName="FormularioDadosFuncao" Src="~/Componentes/FormularioDadosFuncao.ascx" %>

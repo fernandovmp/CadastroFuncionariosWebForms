@@ -1,6 +1,7 @@
 ﻿using CadastroFuncionario.Componentes.Excecoes;
 using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Models;
+using CadastroFuncionarios.CepModulo;
 using System;
 using System.Drawing;
 using System.Web.UI;
@@ -9,6 +10,7 @@ namespace CadastroFuncionario.Componentes
 {
     public partial class FormularioEndereco : UserControl
     {
+        public Popup PopupComponente { get; set; }
         protected void secaoFormulario_ContentInstantiate(object sender, EventArgs eventArgs)
         {
             if (!Page.IsPostBack)
@@ -28,13 +30,7 @@ namespace CadastroFuncionario.Componentes
             {
                 throw new ExcecaoFormularioInvalido("Preencha todos os campos obrigatórios");
             }
-            string cepSemMascara = txtCep.Text.Replace("-", "");
-            long cep;
-            if (!long.TryParse(cepSemMascara, out cep))
-            {
-                txtCep.BorderColor = Color.Red;
-                throw new ExcecaoFormularioInvalido("Informe um CEP válido");
-            }
+            long cep = ObterCep();
             int? numero = null;
             int numeroInformado;
             if (txtNumero.Text.Length > 0)
@@ -58,10 +54,47 @@ namespace CadastroFuncionario.Componentes
             };
         }
 
+        protected async void btnPesquisarCep_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ICepServico cepServico = new BrasilApiCepServico();
+                long cep = ObterCep();
+                DadosEndereco endereco = await cepServico.ObterEndereco(cep);
+                if(endereco == null)
+                {
+                    PopupComponente?.Exibir("Informe um CEP válido");
+                    return;
+                }
+                txtBairro.Text = endereco.Bairro;
+                txtCidade.Text = endereco.Cidade;
+                txtEstado.Text = endereco.Estado;
+                txtRua.Text = endereco.Rua;
+            }
+            catch (ExcecaoFormularioInvalido execao)
+            {
+                PopupComponente?.Exibir(execao.Message);
+            }
+        }
+
+        private long ObterCep()
+        {
+            string cepSemMascara = txtCep.Text.Replace("-", "");
+            long cep;
+            if (!long.TryParse(cepSemMascara, out cep))
+            {
+                txtCep.BorderColor = Color.Red;
+                throw new ExcecaoFormularioInvalido("Informe um CEP válido");
+            }
+
+            return cep;
+        }
+
         internal void Limpar()
         {
             this.LimparControlesDeTexto(txtCep, txtRua,
                 txtNumero, txtBairro, txtCidade, txtEstado);
         }
+
     }
 }

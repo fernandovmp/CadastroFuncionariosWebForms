@@ -10,6 +10,9 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtCep" runat="server" Width="100" CssClass="campo-cep"/>
+                    <button runat="server" id="btnPesquisarCep" onserverclick="btnPesquisarCep_Click" style="background: none; border: none;">
+                        <i runat="server" class="glyphicon glyphicon-search"/>
+                    </button>
                 </td>
                 <td>
                     Rua:
