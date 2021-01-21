@@ -40,6 +40,7 @@ namespace CadastroFuncionario
                 string raizParaSalvar = WebConfigurationManager.AppSettings["CaminhoDocumentosAnexados"];
                 salvarDocumentoServico.SalvarDocumento(raizParaSalvar);
                 CadastrarFuncionario(dadosPessoais);
+                Response.Redirect("~/Home.aspx");
             }
             catch (ExcecaoFormularioInvalido excecao)
             {
