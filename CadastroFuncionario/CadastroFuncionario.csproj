@@ -300,6 +300,12 @@
       <DependentUpon>202101201802594_CricaoDasEntides.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CadastroFuncionario.Log\CadastroFuncionario.Logger.csproj">
+      <Project>{b265a336-6ec1-4dc6-9a48-713523d9fbe4}</Project>
+      <Name>CadastroFuncionario.Logger</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
