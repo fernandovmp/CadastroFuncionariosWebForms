@@ -242,6 +242,10 @@
     <Compile Include="Migrations\202101201802594_CricaoDasEntides.designer.cs">
       <DependentUpon>202101201802594_CricaoDasEntides.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101211702476_ReducaoTamanhoOrgaoEmissor.cs" />
+    <Compile Include="Migrations\202101211702476_ReducaoTamanhoOrgaoEmissor.designer.cs">
+      <DependentUpon>202101211702476_ReducaoTamanhoOrgaoEmissor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Funcao.cs" />
@@ -298,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101201802594_CricaoDasEntides.resx">
       <DependentUpon>202101201802594_CricaoDasEntides.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101211702476_ReducaoTamanhoOrgaoEmissor.resx">
+      <DependentUpon>202101211702476_ReducaoTamanhoOrgaoEmissor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

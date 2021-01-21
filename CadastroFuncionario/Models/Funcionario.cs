@@ -29,7 +29,7 @@ namespace CadastroFuncionario.Models
         public Funcao Funcao { get; set; }
         public const int TamanhoMaximoNome = 100;
         public const int TamanhoMaximoRg = 15;
-        public const int TamanhoMaximoOrgaoEmissor = 100;
+        public const int TamanhoMaximoOrgaoEmissor = 6;
         public const int TamanhoMaximoCtps = 15;
         public const int TamanhMaximoSexo = 10;
         public const int TamanhoMaximoDocumento = 300;
