@@ -61,7 +61,7 @@ namespace CadastroFuncionario
         {
             tabelaResultadoPesquisa.Visible = true;
             lblNome.Text = funcionario.Nome;
-            lblCpf.Text = funcionario.Cpf.ToString("");
+            lblCpf.Text = funcionario.Cpf.ToString("D11");
             lblDataNascimento.Text = funcionario.DataNascimento.ToString("d");
             lblFuncao.Text = funcionario.Funcao.Cargo;
             lblDataAdimissao.Text = funcionario.Funcao.DataAdimissao.ToString("d");
