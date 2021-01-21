@@ -57,7 +57,11 @@ namespace CadastroFuncionario
             string connectionString = WebConfigurationManager.ConnectionStrings["CadastroFuncionario"].ConnectionString;
             using (ContextoFuncionario db = new ContextoFuncionario(connectionString))
             {
-                bool jaCadastrdado = db.Funcionarios.FirstOrDefault(funcionario => funcionario.Cpf == dadosPessoais.Cpf) != null;
+                bool jaCadastrdado = db.Funcionarios
+                    .AsNoTracking()
+                    .Where(funcionario => funcionario.Cpf == dadosPessoais.Cpf)
+                    .Select(funcionario => funcionario.Id)
+                    .FirstOrDefault() != 0;
                 if (jaCadastrdado)
                 {
                     return;
