@@ -36,7 +36,8 @@ namespace CadastroFuncionario
 
             bundles.Add(new ScriptBundle("~/bundles/Componentes").Include(
                 "~/Scripts/jquery.mask.js",
-                "~/Scripts/Componentes/mascarar_campos.js"));
+                "~/Scripts/Componentes/mascarar_campos.js",
+                "~/Scripts/Componentes/popup.js"));
 
             BundleTable.EnableOptimizations = true;
         }
