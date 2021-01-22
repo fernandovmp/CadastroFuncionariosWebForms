@@ -37,7 +37,7 @@ namespace CadastroFuncionario
                         .FirstOrDefault(func => func.Cpf == cpf);
                     if(funcionario == null)
                     {
-                        popup.Exibir("CPF não encontrado");
+                        popup.Exibir("Erro", "CPF não encontrado");
                         return;
                     }
                     funcionario.Funcao = db.Funcoes
@@ -48,12 +48,12 @@ namespace CadastroFuncionario
             }
             catch (ExcecaoFormularioInvalido excecao)
             {
-                popup.Exibir(excecao.Message);
+                popup.Exibir("Erro", excecao.Message);
             }
             catch (Exception execao)
             {
                 logger.Log(DateTime.Now, execao.ToString());
-                popup.Exibir("Oops! Ocorreu um erro durante a pesquisa");
+                popup.Exibir("Erro", "Oops! Ocorreu um erro durante a pesquisa");
             }
         }
 

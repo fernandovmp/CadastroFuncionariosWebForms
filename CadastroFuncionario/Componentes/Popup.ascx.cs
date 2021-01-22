@@ -9,18 +9,9 @@ namespace CadastroFuncionario.Componentes
 {
     public partial class Popup : System.Web.UI.UserControl
     {
-        public string Titulo { get; set; }
-        public string Mensagem { get; set; }
-
-        public void Exibir(string mensagem)
+        public void Exibir(string titulo, string mensagem)
         {
-            popupPanel.Visible = true;
-            Mensagem = mensagem;
-        }
-
-        protected void btnOk_Click(object sender, EventArgs e)
-        {
-            popupPanel.Visible = false;
+            Page.ClientScript.RegisterStartupScript(GetType(), "PopupScript", $"exibirPopup('{titulo}', '{mensagem}')", true);
         }
     }
 }

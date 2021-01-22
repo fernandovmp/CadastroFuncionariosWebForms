@@ -44,12 +44,12 @@ namespace CadastroFuncionario
             }
             catch (ExcecaoFormularioInvalido excecao)
             {
-                popup.Exibir(excecao.Message);
+                popup.Exibir("Erro", excecao.Message);
             }
             catch (Exception execao)
             {
                 logger.Log(DateTime.Now, execao.ToString());
-                popup.Exibir("Oops! Ocorreu um erro durante o cadastro");
+                popup.Exibir("Erro", "Oops! Ocorreu um erro durante o cadastro");
             }
         }
 

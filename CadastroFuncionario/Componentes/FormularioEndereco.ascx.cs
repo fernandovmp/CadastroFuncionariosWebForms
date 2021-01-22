@@ -63,7 +63,7 @@ namespace CadastroFuncionario.Componentes
                 DadosEndereco endereco = await cepServico.ObterEndereco(cep);
                 if(endereco == null)
                 {
-                    PopupComponente?.Exibir("Informe um CEP válido");
+                    PopupComponente?.Exibir("Erro", "Informe um CEP válido");
                     return;
                 }
                 txtBairro.Text = endereco.Bairro;
@@ -73,7 +73,7 @@ namespace CadastroFuncionario.Componentes
             }
             catch (ExcecaoFormularioInvalido execao)
             {
-                PopupComponente?.Exibir(execao.Message);
+                PopupComponente?.Exibir("Erro", execao.Message);
             }
         }
 
