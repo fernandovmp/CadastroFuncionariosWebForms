@@ -17,6 +17,8 @@ namespace CadastroFuncionario.Componentes
             _cepServico = cepServico;
         }
 
+        public FormularioEndereco() { }
+
         public Popup PopupComponente { get; set; }
         protected void secaoFormulario_ContentInstantiate(object sender, EventArgs eventArgs)
         {
