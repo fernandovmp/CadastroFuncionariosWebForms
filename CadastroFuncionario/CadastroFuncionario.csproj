@@ -232,6 +232,8 @@
       <DependentUpon>SecaoFormulario.ascx</DependentUpon>
     </Compile>
     <Compile Include="Data\ContextoFuncionario.cs" />
+    <Compile Include="Data\Factories\ContextoFuncionarioFactory.cs" />
+    <Compile Include="Data\Factories\IContextoFuncionarioFactory.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
