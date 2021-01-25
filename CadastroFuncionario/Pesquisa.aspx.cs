@@ -1,5 +1,6 @@
 ﻿using CadastroFuncionario.Componentes.Excecoes;
 using CadastroFuncionario.Data;
+using CadastroFuncionario.Data.Factories;
 using CadastroFuncionario.Logger;
 using CadastroFuncionario.Models;
 using CadastroFuncionario.Validacoes;
@@ -17,20 +18,23 @@ namespace CadastroFuncionario
 {
     public partial class Pesquisa : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        private readonly IContextoFuncionarioFactory _contextoFuncionarioFactory;
+        private readonly ILogger _logger;
 
+        public Pesquisa(IContextoFuncionarioFactory contextoFuncionarioFactory, ILogger logger)
+        {
+            _contextoFuncionarioFactory = contextoFuncionarioFactory;
+            _logger = logger;
         }
 
         protected void btnPesquisar_Click(object sender, EventArgs e)
         {
             tabelaResultadoPesquisa.Visible = false;
-            ILogger logger = new TxtLogger();
             try
             {
                 long cpf = ObterCpf();
                 string connectionString = WebConfigurationManager.ConnectionStrings["CadastroFuncionario"].ConnectionString;
-                using (var db = new ContextoFuncionario(connectionString))
+                using (ContextoFuncionario db = _contextoFuncionarioFactory.Create())
                 {
                     Funcionario funcionario = db.Funcionarios
                         .AsNoTracking()
@@ -52,7 +56,7 @@ namespace CadastroFuncionario
             }
             catch (Exception execao)
             {
-                logger.Log(DateTime.Now, execao.ToString());
+                _logger.Log(DateTime.Now, execao.ToString());
                 popup.Exibir("Erro", "Oops! Ocorreu um erro durante a pesquisa");
             }
         }

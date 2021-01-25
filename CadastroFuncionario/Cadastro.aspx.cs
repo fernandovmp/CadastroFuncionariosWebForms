@@ -1,5 +1,6 @@
 ﻿using CadastroFuncionario.Componentes.Excecoes;
 using CadastroFuncionario.Data;
+using CadastroFuncionario.Data.Factories;
 using CadastroFuncionario.Extensions;
 using CadastroFuncionario.Logger;
 using CadastroFuncionario.Models;
@@ -17,6 +18,14 @@ namespace CadastroFuncionario
 {
     public partial class Cadastro : System.Web.UI.Page
     {
+        private readonly IContextoFuncionarioFactory _contextoFuncionarioFactory;
+        private readonly ILogger _logger;
+        public Cadastro(IContextoFuncionarioFactory contextoFuncionarioFactory, ILogger logger)
+        {
+            _contextoFuncionarioFactory = contextoFuncionarioFactory;
+            _logger = logger;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             formularioEndereco.PopupComponente = popup;
@@ -24,7 +33,6 @@ namespace CadastroFuncionario
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-            ILogger logger = new TxtLogger();
             try
             {
                 Funcionario dadosPessoais = formularioDadosFuncionario.ObterDadosPessoais();
@@ -48,15 +56,14 @@ namespace CadastroFuncionario
             }
             catch (Exception execao)
             {
-                logger.Log(DateTime.Now, execao.ToString());
+                _logger.Log(DateTime.Now, execao.ToString());
                 popup.Exibir("Erro", "Oops! Ocorreu um erro durante o cadastro");
             }
         }
 
         private void CadastrarFuncionario(Funcionario dadosPessoais)
         {
-            string connectionString = WebConfigurationManager.ConnectionStrings["CadastroFuncionario"].ConnectionString;
-            using (ContextoFuncionario db = new ContextoFuncionario(connectionString))
+            using (ContextoFuncionario db = _contextoFuncionarioFactory.Create())
             {
                 bool jaCadastrdado = db.Funcionarios
                     .AsNoTracking()

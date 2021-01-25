@@ -10,6 +10,13 @@ namespace CadastroFuncionario.Componentes
 {
     public partial class FormularioEndereco : UserControl
     {
+        private readonly ICepServico _cepServico;
+
+        public FormularioEndereco(ICepServico cepServico)
+        {
+            _cepServico = cepServico;
+        }
+
         public Popup PopupComponente { get; set; }
         protected void secaoFormulario_ContentInstantiate(object sender, EventArgs eventArgs)
         {
@@ -58,9 +65,8 @@ namespace CadastroFuncionario.Componentes
         {
             try
             {
-                ICepServico cepServico = new BrasilApiCepServico();
                 long cep = ObterCep();
-                DadosEndereco endereco = await cepServico.ObterEndereco(cep);
+                DadosEndereco endereco = await _cepServico.ObterEndereco(cep);
                 if(endereco == null)
                 {
                     PopupComponente?.Exibir("Erro", "Informe um CEP válido");
