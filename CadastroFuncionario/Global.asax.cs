@@ -1,5 +1,6 @@
 ﻿using CadastroFuncionario.Data.Factories;
 using CadastroFuncionario.Logger;
+using CadastroFuncionario.Servicos;
 using CadastroFuncionarios.CepModulo;
 using Microsoft.AspNet.WebFormsDependencyInjection.Unity;
 using System;
@@ -30,6 +31,8 @@ namespace CadastroFuncionario
             string connectionString = WebConfigurationManager.ConnectionStrings["CadastroFuncionario"].ConnectionString;
             var contextoFuncionarioFactory = new ContextoFuncionarioFactory(connectionString);
             container.RegisterInstance<IContextoFuncionarioFactory>(contextoFuncionarioFactory);
+
+            container.RegisterType<SalvarDocumentoAnexadoServico>();
         }
     }
 }

@@ -20,10 +20,14 @@ namespace CadastroFuncionario
     {
         private readonly IContextoFuncionarioFactory _contextoFuncionarioFactory;
         private readonly ILogger _logger;
-        public Cadastro(IContextoFuncionarioFactory contextoFuncionarioFactory, ILogger logger)
+        private readonly SalvarDocumentoAnexadoServico _salvarDocumentoAnexadoServico;
+        public Cadastro(IContextoFuncionarioFactory contextoFuncionarioFactory, 
+            ILogger logger, 
+            SalvarDocumentoAnexadoServico salvarDocumentoAnexadoServico)
         {
             _contextoFuncionarioFactory = contextoFuncionarioFactory;
             _logger = logger;
+            _salvarDocumentoAnexadoServico = salvarDocumentoAnexadoServico;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -40,13 +44,13 @@ namespace CadastroFuncionario
                 Funcao funcao = formularioDadosFuncao.ObterDadosFuncao();
                 string ctps = formularioDadosFuncao.ObterCtps();
                 HttpPostedFile documento = formularioDadosFuncao.ObterDocumento();
-                var salvarDocumentoServico = new SalvarDocumentoAnexadoServico(documento);
+                _salvarDocumentoAnexadoServico.Preparar(documento);
                 dadosPessoais.Endereco = endereco;
                 dadosPessoais.Funcao = funcao;
                 dadosPessoais.Ctps = ctps;
-                dadosPessoais.Documento = salvarDocumentoServico.NomeDocumento;
+                dadosPessoais.Documento = _salvarDocumentoAnexadoServico.NomeDocumento;
                 string raizParaSalvar = WebConfigurationManager.AppSettings["CaminhoDocumentosAnexados"];
-                salvarDocumentoServico.SalvarDocumento(raizParaSalvar);
+                _salvarDocumentoAnexadoServico.SalvarDocumento(raizParaSalvar);
                 CadastrarFuncionario(dadosPessoais);
                 Response.Redirect("~/Home.aspx");
             }
