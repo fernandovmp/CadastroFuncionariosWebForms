@@ -1,4 +1,5 @@
-﻿using CadastroFuncionario.Models;
+﻿using CadastroFuncionario.Data.Mapeamento;
+using CadastroFuncionario.Models;
 using System.Data.Entity;
 
 namespace CadastroFuncionario.Data
@@ -14,16 +15,9 @@ namespace CadastroFuncionario.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Funcionario>()
-                .ToTable("DadosFuncionario");
-            modelBuilder.Entity<Funcionario>()
-                .HasRequired(entity => entity.Funcao)
-                .WithRequiredPrincipal();
-            modelBuilder.Entity<Funcionario>()
-                .HasRequired(entity => entity.Endereco)
-                .WithRequiredPrincipal();
-            modelBuilder.Entity<Endereco>().ToTable("EnderecoFuncionario");
-            modelBuilder.Entity<Funcao>().ToTable("FuncaoFuncionario");
+            new MapeamentoFuncionario().Configurar(modelBuilder.Entity<Funcionario>());
+            new MapeamentoEndereco().Configurar(modelBuilder.Entity<Endereco>());
+            new MapeamentoFuncao().Configurar(modelBuilder.Entity<Funcao>());
             base.OnModelCreating(modelBuilder);
         }
     }

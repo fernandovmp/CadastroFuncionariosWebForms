@@ -234,6 +234,10 @@
     <Compile Include="Data\ContextoFuncionario.cs" />
     <Compile Include="Data\Factories\ContextoFuncionarioFactory.cs" />
     <Compile Include="Data\Factories\IContextoFuncionarioFactory.cs" />
+    <Compile Include="Data\Mapeamento\IMapeamento.cs" />
+    <Compile Include="Data\Mapeamento\MapeamentoEndereco.cs" />
+    <Compile Include="Data\Mapeamento\MapeamentoFuncao.cs" />
+    <Compile Include="Data\Mapeamento\MapeamentoFuncionario.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
